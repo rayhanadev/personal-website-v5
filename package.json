@@ -1,0 +1,34 @@
+{
+	"private": true,
+	"name": "rayhanadevdotcom",
+	"scripts": {
+		"clean": "turbo clean",
+		"build": "turbo build",
+		"deploy": "turbo deploy",
+		"dev": "dotenv -- turbo dev --no-cache --continue",
+		"format": "rome format --write ./apps ./packages",
+		"lint": "turbo lint",
+		"test": "turbo test",
+		"wrangler": "wrangler",
+		"prepare": "husky install"
+	},
+	"devDependencies": {
+		"commitlint": "^17.6.7",
+		"commitlint-config-gitmoji": "^2.3.1",
+		"dotenv-cli": "^7.2.1",
+		"husky": "^8.0.0",
+		"lint-staged": "^13.2.3",
+		"rome": "12.1.3",
+		"turbo": "^1.10.9",
+		"validate-branch-name": "^1.3.0",
+		"wrangler": "^3.3.0"
+	},
+	"packageManager": "pnpm@8.6.9",
+	"lint-staged": {
+		"*.{js,ts,mjs,tsx}": ["rome check --apply && turbo lint"],
+		"*.{json,js,jsx,mjs,ts,tsx}": ["rome format --write"]
+	},
+	"validate-branch-name": {
+		"pattern": "^(main){1}$|^.+/(feature|fix|hotfix|release).+$"
+	}
+}
