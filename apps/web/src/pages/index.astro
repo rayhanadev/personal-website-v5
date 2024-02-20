@@ -1,0 +1,98 @@
+---
+export const prerender = false;
+
+import { getCollection } from "astro:content";
+
+import Layout from "@layouts/Layout.astro";
+
+import Header from "@components/Header";
+import BlogItem from "@components/BlogItem.astro";
+import ExpandingDetail from "@components/ExpandingDetail.tsx";
+import Footer from "@components/Footer.astro";
+
+const publishedBlogEntries = await getCollection("blog", ({ data }) => {
+  return data.draft !== true;
+});
+
+const posts = publishedBlogEntries.slice(0, 3);
+---
+
+<Layout
+	title="Rayhan Noufal Arayilakath - Fullstack Software Engineer"
+	description="Fullstack Software Engineer based in the United States. I have 3+ years of experience with companies like Replit."
+	ogtitle="RayhanADev - Fullstack Software Engineer"
+	ogdescription="Based in Texas. Currently at Replit. Formerly freelancing."
+>
+	<main
+		class="md:mt-28 flex flex-col flex-nowrap gap-4 w-full py-8 px-8 md:mb-auto"
+	>
+		<div class="md:ml-14">
+			<Header client:load textSize="text-2xl" />
+		</div>
+		<section class="flex flex-col md:flex-row items-start justify-start gap-4 mt-1 mb-2 w-full">
+			<header class="mt-0.5 text-background-highest text-sm md:text-base">
+				info.
+			</header>
+			<p class="text-foreground-dimmer font-thin w-full text-base md:text-lg leading-7">
+				I'm Ray (<span class="italic">@rayhanadev</span>), a Fullstack Software Engineer based in Texas.
+				Self-taught in software engineering, web development, and cybersecurity. Currently at Replit.
+			</p>
+		</div>
+		</section>
+		<section class="flex flex-col md:flex-row items-start justify-start gap-4 mt-1 mb-2 w-full">
+			<h2 class="mt-0.5 text-background-highest text-sm md:text-base pt-2">
+				work.
+			</h2>
+			<div class="flex flex-col items-start justify-start gap-4 w-full -mx-2">
+				<ExpandingDetail client:idle
+					org="Replit"
+					url="https://replit.com/"
+					title="Community Moderation Intern"
+					description={[
+						"Leading a team of volunteer community moderators - helping to facilitate communications, events, and relations.",
+						"Developing advanced security infrastructure to combat site abuse, phishing, credit card fraud, and copyright violations.",
+						"Deployed a data-driven workflow to fine-tune an AI model on previous reports to handle spam posts.",
+						"Managing internal calendars, meetings, and task management systems.",
+						"Overseeing various public forums, including on-platform, Discourse, and Discord.",
+						"Assisting in the evolution of internal and public Trust & Safety policy.",
+					]}
+					timeframe="March 2023 - present"
+				/>
+				<ExpandingDetail client:idle
+					title="Freelance Web Developer"
+					description={[
+						"Developed various web applications, including AI generative art platforms, internal search tools, and project management dashboards.",
+						"Created products in a variety of languages, such as Node.js, Python, and Golang, and Lua.",
+						"Designed user interfaces and brand identities from scratch.",
+						"Optimized user experiences to fine-tune adoption of new applications.",
+						"Worked with over eight clients in six months, multitasking various projects and balancing meeting schedules.",
+						"Satisfied all clients I worked with, some even requesting future work opportunities.",
+					]}
+					timeframe="September 2022 - January 2023"
+				/>
+			</div>
+		</section>
+		<section class="flex flex-col md:flex-row items-start justify-start gap-4 mt-1 mb-2 w-full">
+			<header class="mt-0.5 text-background-highest text-sm md:text-base">
+				blog.
+			</header>
+			<div class="flex flex-col items-start justify-start w-full -mx-2 -mt-2">
+				{posts && posts.map((item) => {
+					const { data } = item;
+
+					return (
+						<BlogItem
+							date={data.date}
+							slug={item.slug}
+							title={data.title}
+						/>
+					)
+				})}
+				<p class="text-foreground-dimmest hover:text-foreground-dimmer font-thin w-full text-base mt-1 p-2 mt-auto z-30">
+					<a href="/blog">see more.</a>
+				</p>
+			</div>
+		</section>
+	</main>
+	<Footer />
+</Layout>

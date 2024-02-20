@@ -1,0 +1,7 @@
+{
+  "name": "tsconfig",
+  "dependencies": {
+    "@cloudflare/workers-types": "^4.20240208.0",
+    "astro": "^4.4.0"
+  }
+}

@@ -1,0 +1,52 @@
+---
+export const prerender = false;
+
+import { getEntry } from "astro:content";
+import { format, formatDistanceToNow } from "date-fns";
+
+import BlogPost from "@layouts/BlogPost.astro";
+
+import Header from "@components/Header";
+import Views from "@components/Views";
+
+const { slug } = Astro.params;
+if (slug === undefined) {
+  throw new Error("Slug is required");
+}
+
+const entry = await getEntry("blog", slug);
+
+if (entry === undefined) {
+  return Astro.redirect("/404");
+}
+
+const author = await getEntry(entry.data.author);
+const date = format(entry.data.date, "MMMM Lo',' y");
+const relative = formatDistanceToNow(entry.data.date);
+
+const { Content } = await entry.render();
+---
+
+<BlogPost
+	title="Rayhan Noufal Arayilakath - Fullstack Software Engineer"
+	description="Fullstack Software Engineer based in the United States. I have 3+ years of experience with companies like Replit."
+	ogtitle="RayhanADev - Fullstack Software Engineer"
+	ogdescription="Based in Texas. Currently at Replit. Formerly freelancing."
+>
+	<article class="flex flex-col items-start justify-start w-full gap-4">
+		<Header client:load text={entry.data.title} textSize="text-2xl" />
+		<div class="flex flex-row items-start justify-between mb-4 w-full">
+			<p class="text-xs md:text-sm text-background-highest">
+				{
+					// @ts-ignore: generated astro types mess 
+					//             with linting for some reason
+					author.data.name
+				} | <time datetime={entry.data.date.toISOString()}>{date}</time>{" "}<span class="hidden md:inline-block">({relative} ago)</span>
+			</p>
+			<p class="text-xs md:text-sm text-background-highest"><Views path={Astro.url.pathname} count client:load /> views</p>
+		</div>
+		<div class="w-full prose prose-white scrollbar-default">
+			<Content />
+		</div>
+	</article>
+</BlogPost>

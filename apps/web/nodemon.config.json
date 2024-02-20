@@ -1,0 +1,4 @@
+{
+	"watch": ["src/", "public/"],
+	"ext": "astro,ts,tsx,js,jsx,json,md,mdx,css"
+}

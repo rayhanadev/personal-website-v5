@@ -1,0 +1,48 @@
+---
+export const prerender = false;
+
+import { getCollection } from "astro:content";import { format } from "date-fns";
+
+import BlogPost from "@layouts/BlogPost.astro";
+
+import Header from "@components/Header";
+import Views from "@components/Views";
+
+const publishedBlogEntries = await getCollection("blog", ({ data }) => {
+  return data.draft !== true;
+});
+
+const posts = publishedBlogEntries.slice(0, 7);
+---
+
+<BlogPost
+	title="Rayhan Noufal Arayilakath - Fullstack Software Engineer"
+	description="Fullstack Software Engineer based in the United States. I have 3+ years of experience with companies like Replit."
+	ogtitle="RayhanADev - Fullstack Software Engineer"
+	ogdescription="Based in Texas. Currently at Replit. Formerly freelancing."
+>
+	<Header client:load text="Blog" textSize="text-2xl" />
+	<section>	
+		<div class="flex flex-row items-start justify-start gap-8 w-full font-thin text-background-highest text-sm md:text-base">
+			<span class="w-14">date</span>
+			<span>title</span>
+			<span class="ml-auto pr-4">views</span>
+		</div>
+		<ul class="flex flex-col items-start justify-start gap-4 w-full -mx-2 text-lg">
+			{posts.map((item) => {
+				const { data } = item;
+				const date = format(data.date, "MM/dd");
+
+				return (
+					<li class="w-full">
+						<a href={`/blog/${item.slug}`} class="flex flex-row items-start justify-start gap-8 w-full p-2 my-2 transition-colors hover:bg-background-default rounded-md w-full">
+							<span class="text-foreground-dimmest w-14">{date}</span>
+							<span>{data.title}</span>
+							<span class="ml-auto"><Views path={`/blog/${item.slug}`} client:load /></span>
+						</a>
+					</li>
+				)
+			})}
+		</ul>
+	</section>
+</BlogPost>

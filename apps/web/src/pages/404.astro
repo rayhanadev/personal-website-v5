@@ -1,0 +1,21 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+import Header from "@components/Header";
+---
+
+<Layout
+	title="404"
+	description="Fullstack Software Engineer based in the United States. I have 3+ years of experience with companies like Replit."
+	ogtitle="RayhanADev - Fullstack Software Engineer"
+	ogdescription="Based in Texas. Currently at Replit. Formerly freelancing."
+>
+	<main
+		class="m-auto flex flex-row w-full max-w-md flex-nowrap gap-4 rounded py-8 px-8 md:my-auto md:max-w-3xl items-start"
+	>
+		<Header client:load text="404." textSize="text-2xl md:text-xl" />
+		<p class="font-semibold text-2xl md:text-xl">
+			Let's go back <a href="/" rel="prefetch">home</a>.
+		</p>
+	</main>
+</Layout>

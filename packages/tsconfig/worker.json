@@ -1,0 +1,21 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "Worker",
+	"compilerOptions": {
+		"target": "es2021",
+		"lib": ["es2021"],
+		"jsx": "react",
+		"module": "es2022",
+		"forceConsistentCasingInFileNames": true,
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"allowJs": true,
+		"checkJs": false,
+		"noEmit": true,
+		"types": ["@cloudflare/workers-types"],
+		"skipLibCheck": true,
+		"strict": true
+	}
+}

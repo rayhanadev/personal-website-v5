@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		height: 100%;
+		overflow-y: auto;
+	}
+
+	body {
+		min-height: 100vh;
+		min-height: -webkit-fill-available;
+	}
+	
+	@font-face {
+		font-family: 'Victor Mono';
+		font-path: '/fonts/victormono/regular';
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
+	}
+	
+	@font-face {
+		font-family: 'Victor Mono';
+		font-path: '/fonts/victormono/italic';
+		font-weight: 400;
+		font-style: italic;
+		font-display: swap;
+	}
+}
+
+@layer utilities {
+	.scrollbar-root {
+	  scrollbar-color: theme(colors.background.default) theme(colors.background.root) ;
+	  scrollbar-width: auto;
+	}
+	
+	.scrollbar-default {
+	  scrollbar-color: theme(colors.background.higher) theme(colors.background.default) ;
+	  scrollbar-width: auto;
+	}
+}

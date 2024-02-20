@@ -1,0 +1,32 @@
+run = "pnpm dev"
+entrypoint = "README.md"
+modules = ["nodejs-20:v8-20230920-bd784b9"]
+disableInstallBeforeRun = true
+hidden = [
+	".build",
+	".config",
+	"pnpm-workspace.yaml",
+	"pnpm-lock.yaml",
+	"doppler.yaml",
+	"biome.json",
+	"turbo.json",
+	"env.d.ts",
+	"*.config.*",
+	".*",
+]
+
+[nix]
+channel = "stable-23_05"
+
+[env]
+ASTRO_TELEMETRY_DISABLED = "1"
+XDG_CONFIG_HOME = "/home/runner/.config"
+PATH = "/home/runner/$REPL_SLUG/.config/npm/node_global/bin:/home/runner/$REPL_SLUG/node_modules/.bin"
+npm_config_prefix = "/home/runner/$REPL_SLUG/.config/npm/node_global"
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix", ".config"]
+
+[[ports]]
+localPort = 3000
+externalPort = 80

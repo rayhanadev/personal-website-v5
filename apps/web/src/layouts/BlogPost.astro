@@ -1,0 +1,151 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+
+import "@styles/global.css";
+
+import { Head } from "astro-capo";
+import { SEO } from "astro-seo";
+
+import NavBar from "@components/NavBar.astro";
+import Footer from "@components/Footer.astro";
+
+export interface Props {
+	title: string;
+	ogtitle: string;
+	description: string;
+	ogdescription: string;
+}
+
+const { title, ogtitle, description, ogdescription } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scrollbar-root">
+	<Head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify({
+				'@context': 'http://www.schema.org',
+				'@type': 'person',
+				name: 'Rayhan Noufal Arayilakath',
+				alternateName: 'RayhanADev',
+				description: 'Developer',
+				disambiguatingDescription: 'Fullstack Software Engineer',
+				jobTitle: 'Community Moderation Intern',
+				height: '68 inches',
+				gender: 'male',
+				url: 'https://www.rayhanadev.com',
+				sameAs: [
+					'https://github.com/rayhanadev',
+					'https://linkedin.com/in/rayhanadev',
+					'https://twitter.com/rayhanadev',
+					'https://threads.net/rayhanadev',
+					'https://replit.com/@RayhanADev',
+					'https://www.youtube.com/@rayhanadev',
+				],
+				image: 'https://www.rayhanadev.com/rayhanarayilakath.jpeg',
+				address: {
+					'@type': 'PostalAddress',
+					addressRegion: 'Texas',
+					addressCountry: 'United States of America',
+				},
+				email: 'me@rayhanadev.com',
+				birthDate: '2006-06-24',
+			})}
+		></script>
+
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/apple-touch-icon.png"
+		/>
+
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/favicon-16x16.png"
+		/>
+
+		<link rel="manifest" href="/manifest.json" />
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#4f7c8a" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="#14131E" />
+
+		<meta name="msapplication-TileColor" content="#4f7c8a" />
+		<meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+		<meta name="theme-color" content="#14131E" />
+
+		<meta
+			name="robots"
+			content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
+		/>
+
+		<SEO
+			title={title}
+			description={description}
+			canonical="https://www.rayhanadev.com"
+			openGraph={{
+				basic: {
+					type: 'website',
+					title: ogtitle,
+					image: `${import.meta.env.SITE}/opengraphimage.png`,
+				},
+				optional: {
+					description: ogdescription,
+					locale: 'en-US',
+					siteName: 'rayhanadev.com',
+				},
+				image: {
+					alt: "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at contact@rayhanadev.com.",
+					type: 'image/png',
+				},
+			}}
+			twitter={{
+				title: title,
+				description: ogdescription,
+				image: `${import.meta.env.SITE}/twittercard.png`,
+				imageAlt:
+					"Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at contact@rayhanadev.com.",
+				card: 'summary_large_image',
+				site: 'rayhanadev',
+				creator: 'rayhanadev',
+			}}
+		/>
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="https://www.rayhanadev.com/feed" />
+
+		<meta name="author" content="Rayhan Noufal Arayilakath" />
+		<meta
+			name="keywords"
+			content="ray, rayhan, noufal, arayilakath, rayhan noufal, rayhan arayilakath, rayhan noufal arayilakath, ray arayilakath, rayhanadev, furret, furret developer, furret.css, furret.dev, furret.codes, fullstack web, fullstack developer, fullstack, developer, software, software engineer, replit"
+		/>
+
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preload" href={`/api/views?path=${Astro.url.pathname}`} as="fetch" crossorigin="anonymous" />
+		<ViewTransitions />
+	</Head>
+	<body
+		class="bg-background-root text-foreground-default font-mono relative flex flex-col items-center justify-start overflow-y-hidden text-base max-w-md md:max-w-3xl mx-auto"
+	>
+		<div class="flex flex-col flex-nowrap gap-10 w-full p-8 md:mb-auto md:mt-16">
+			<NavBar />
+			<main
+				class="flex flex-col flex-nowrap gap-10 w-full"
+			>
+				<slot />
+			</main>
+		</div>
+		<Footer />
+	</body>
+</html>

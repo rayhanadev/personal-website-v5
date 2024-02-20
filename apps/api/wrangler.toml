@@ -1,0 +1,18 @@
+name = "api"
+compatibility_date = "2023-12-01"
+compatibility_flags = []
+account_id = "ccb1e30b3978cb315b7977cad94ce7f2"
+send_metrics = false
+main = "src/index.ts"
+
+[[kv_namespaces]]
+binding = "VIEWS"
+id = "140c2efbf4d149beba57086d2e0a4bde"
+preview_id = "5bb7ffa16d574bd6a5ebfd01a0c82c62"
+
+[[routes]]
+pattern = "www.rayhanadev.com/api/*"
+zone_id = "c713e5ded1d3494d22a93bcede439a9d"
+
+[placement]
+mode = "smart"

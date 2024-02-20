@@ -1,0 +1,19 @@
+---
+import { format } from "date-fns";
+
+export interface Props {
+	date: Date;
+	slug: string;
+	title: string;
+};
+
+const { date, slug, title } = Astro.props;
+const formatted = format(date, "MMM do',' y");
+---
+
+<a href={`/blog/${slug}`} class="flex flex-row items-center justify-between gap-1 transition-colors hover:bg-background-default cursor-pointer rounded-md p-2 z-30 w-full">
+	<p class="text-foreground-default font-medium text-base md:text-lg">
+		{title}
+	</p>
+	<time class="text-foreground-dimmest font-thin text-sm italic" datetime={date.toISOString()}>{formatted}</time>
+</a>

@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+
+import logo from "@assets/logo-transparent.png";
+
+export interface Props {};
+
+const {} = Astro.props;
+---
+
+<header class="flex flex-row items-center justify-between text-foreground-dimmer w-full">
+	<a class="flex flex-row items-center justify-start text-foreground-dimmer p-2 pl-0 -ml-2 transition-colors hover:bg-background-default rounded-md cursor-pointer" href="/">
+		<Image src={logo} alt="RayhanADev's Logo" class="h-8 w-8" />
+		rayhanadev
+	</a>
+	<nav class="flex flex-row items-center justify-end gap-4">
+		<a class="transition-colors hover:text-foreground-default" href="/" rel="prefetch">home</a>
+		<a class="transition-colors hover:text-foreground-default" href="/blog">blog</a>
+	</nav>
+</header>
