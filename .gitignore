@@ -42,3 +42,6 @@ yarn-error.log*
 .cache/
 .upm/
 .breakpoints
+
+# Turborepo
+.turbo

@@ -43,7 +43,7 @@ interface ListProps
 const List: React.FC<ListProps> = ({ loaded, description, ...props }) => (
 	<ul className={list({ loaded })} {...props}>
 		{description.map((line) => (
-			<li key={atob(line).slice(16)} className="mb-2 leading-7">
+			<li key={btoa(line).slice(16)} className="mb-2 leading-7">
 				{line}
 			</li>
 		))}
