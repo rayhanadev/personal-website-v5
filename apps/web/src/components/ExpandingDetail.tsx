@@ -80,7 +80,7 @@ const ExpandingDetail: React.FC<Props> = ({
 		<div className="flex flex-col items-start justify-start w-full bg-background-root z-10">
 			<div
 				onClick={() => setExpanded(!expanded)}
-				onKeyPress={() => setExpanded(!expanded)}
+				onKeyDown={() => setExpanded(!expanded)}
 				className="flex flex-row items-center justify-start w-full transition-colors hover:bg-background-default cursor-pointer rounded-md p-2 z-30"
 			>
 				<div className="flex flex-col items-start justify-start gap-1">
