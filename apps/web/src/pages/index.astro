@@ -47,16 +47,46 @@ const posts = publishedBlogEntries.slice(0, 3);
 				<ExpandingDetail client:idle
 					org="Replit"
 					url="https://replit.com/"
-					title="Community Moderation Intern"
+					title="Trust & Safety Intern"
 					description={[
-						"Leading a team of volunteer community moderators - helping to facilitate communications, events, and relations.",
-						"Developing advanced security infrastructure to combat site abuse, phishing, credit card fraud, and copyright violations.",
-						"Deployed a data-driven workflow to fine-tune an AI model on previous reports to handle spam posts.",
-						"Managing internal calendars, meetings, and task management systems.",
-						"Overseeing various public forums, including on-platform, Discourse, and Discord.",
-						"Assisting in the evolution of internal and public Trust & Safety policy.",
+						"Implemented early-warning abuse alerts to address potential issues and safeguard the platform's integrity swiftly.",
+						"Leveraged data analysis techniques to proactively identify and mitigate emerging abuse vectors.",
+						"Orchestrated a team of volunteer community moderators to facilitate communications and events and foster strong relations effectively.",
+						"Developed and deployed advanced abuse detection systems and microservices, streamlining and facilitating large-scale actions.",
+						"Engineered and implemented cutting-edge security infrastructure to proactively combat site abuse, phishing, credit card fraud, and copyright violations.",
+						"Contributed to enhancing internal and public Trust and Safety policies.",
+						"Deployed a data-driven workflow to optimize an AI model for efficiently handling spam posts.",
+						"Authored and efficiently issued DMCA takedown requests in adherence to legal protocols.",
+						"Established prompt and effective communication channels with phishing reporters, ensuring rapid resolution of incidents and maintaining user trust.",
 					]}
 					timeframe="March 2023 - present"
+				/>
+				<ExpandingDetail client:idle
+					org="Westlake Academy"
+					url="https://westlakeacademy.org/"
+					title="Teaching Assistant IB History of the Americas"
+					description={[
+						"Assisted the teacher in collating and organizing important documents for lesson preparation, ensuring smooth classroom operations.",
+						"Reviewed and provided valuable feedback on student submissions, facilitating constructive learning and academic growth.",
+						"Administered exams under teacher supervision, maintaining a fair and consistent testing environment.",
+						"Supported students with study skills, time management, and exam preparation strategies.",
+						"Maintained a positive and inclusive classroom environment, promoting student participation and ensuring a conducive learning atmosphere.",
+					]}
+					timeframe="August 2023 - Present"
+				/>
+				<ExpandingDetail client:idle
+					org="Westlake Academy"
+					url="https://westlakeacademy.org/"
+					title="Teaching Assistant IB Computer Science"
+					description={[
+						"Actively assisted the teacher in delivering lessons, providing valuable insights from industry experience to supplement classroom instruction.",
+						"Supported students across various grade levels, offering one-on-one guidance and clarification on complex topics to enhance understanding and facilitate academic success.",
+						"Provided additional tutoring outside the classroom upon request, helping students grasp challenging concepts and develop problem-solving skills.",
+						"Collaborated with the teacher to develop and implement innovative teaching strategies, fostering student engagement and critical thinking.",
+						"Leveraged industry experience to present real-world applications of computer science concepts, enriching the learning experience for students.",
+						"Supported the teacher in organizing and coordinating hands-on coding projects, encouraging students to apply theoretical knowledge to practical scenarios.",
+					]}
+					timeframe="August 2022 - Present"
 				/>
 				<ExpandingDetail client:idle
 					title="Freelance Web Developer"
@@ -70,29 +100,42 @@ const posts = publishedBlogEntries.slice(0, 3);
 					]}
 					timeframe="September 2022 - January 2023"
 				/>
+				<ExpandingDetail client:idle
+					org="Deel"
+					url="https://www.deel.com/"
+					title="Freelance Web Developer"
+					description={[
+						"Shipped a full-stack web application, integrating Algolia into Deel's blog search, based on the client's specifications in two weeks, well under the client's expected time.",
+						"Offered strong client service skills, keeping clients satisfied and creating a product that exceeded expectations.",
+						"Performed optimizations and tweaks based on feedback from the marketing team.",
+					]}
+					timeframe="September 2022 - September 2022"
+				/>
 			</div>
 		</section>
-		<section class="flex flex-col md:flex-row items-start justify-start gap-4 mt-1 mb-2 w-full">
-			<header class="mt-0.5 text-background-highest text-sm md:text-base">
-				blog.
-			</header>
-			<div class="flex flex-col items-start justify-start w-full -mx-2 -mt-2">
-				{posts && posts.map((item) => {
-					const { data } = item;
-
-					return (
-						<BlogItem
-							date={data.date}
-							slug={item.slug}
-							title={data.title}
-						/>
-					)
-				})}
-				<p class="text-foreground-dimmest hover:text-foreground-dimmer font-thin w-full text-base mt-1 p-2 mt-auto z-30">
-					<a href="/blog">see more.</a>
-				</p>
-			</div>
-		</section>
+		{/*
+			<section class="flex flex-col md:flex-row items-start justify-start gap-4 mt-1 mb-2 w-full">
+				<header class="mt-0.5 text-background-highest text-sm md:text-base">
+					blog.
+				</header>
+				<div class="flex flex-col items-start justify-start w-full -mx-2 -mt-2">
+					{posts && posts.map((item) => {
+						const { data } = item;
+	
+						return (
+							<BlogItem
+								date={data.date}
+								slug={item.slug}
+								title={data.title}
+							/>
+						)
+					})}
+					<p class="text-foreground-dimmest hover:text-foreground-dimmer font-thin w-full text-base mt-1 p-2 mt-auto z-30">
+						<a href="/blog">see more.</a>
+					</p>
+				</div>
+			</section>
+		*/}
 	</main>
 	<Footer />
 </Layout>
