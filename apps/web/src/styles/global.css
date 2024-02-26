@@ -13,6 +13,10 @@
 		min-height: -webkit-fill-available;
 	}
 	
+  ::selection {
+    background-color: rgba(15, 154, 210, 0.2);
+  }
+	
 	@font-face {
 		font-family: 'Victor Mono';
 		font-path: '/fonts/victormono/regular';
