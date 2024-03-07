@@ -6,6 +6,8 @@ import "@styles/global.css";
 import { Head } from "astro-capo";
 import { SEO } from "astro-seo";
 
+import KonamiCode from "@components/KonamiCode";
+
 export interface Props {
 	title: string;
 	ogtitle: string;
@@ -136,3 +138,8 @@ const { title, ogtitle, description, ogdescription } = Astro.props;
 		<slot />
 	</body>
 </html>
+
+<script>
+	import Konami from "konami";
+	new Konami("https://hayrenryzm.com");
+</script>
